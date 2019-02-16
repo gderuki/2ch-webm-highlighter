@@ -1,0 +1,16 @@
+  {
+    "name": "2ch Video Highlighter",
+    "version": "1.0",
+    "description": "Highlight all the webms, mp4s, etc...",
+    "content_scripts": [
+      {
+        "matches": ["https://*.2ch.hk/*"],
+        "js": ["webm.js"]
+      }
+    ],
+    "permissions": [
+      "storage", 
+      "activeTab"
+    ],
+    "manifest_version": 2
+  }
