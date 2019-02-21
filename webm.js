@@ -1,7 +1,6 @@
-window.setInterval(function () {
+function parseVideoTitles() {
   // get all posts with attachments
-  var postsWithAttachment = document.querySelectorAll('[id^=title-]');
-
+  var postsWithAttachment = document.querySelectorAll('[class^=desktop]');
   var webms = [];
 
   // Filter out anything that isn't video
@@ -25,6 +24,29 @@ window.setInterval(function () {
       webms[i].style.cssText = "color: deeppink !important; font-weight: bold !important; font-size: 16px !important;";
     }
   }
+}
 
+// Call method for the first time, so we have someting when we open page
+parseVideoTitles();
 
-}, 5000);
+// Select the node that will be observed for mutations (middle content div)
+// since there is no ID, we use class to identify middle div's body.
+var targetNode = document.getElementsByClassName('cntnt__right')[0];
+
+// Options for the observer (which mutations to observe)
+var config = { attributes: true, childList: true, subtree: true };
+
+// Callback function to execute when mutations are observed
+var callback = function (mutationsList, observer) {
+  for (var mutation of mutationsList) {
+    if (mutation.type == 'childList') {
+      parseVideoTitles();
+    }
+  }
+};
+
+// Create an observer instance linked to the callback function
+var observer = new MutationObserver(callback);
+
+// Start observing the target node for configured mutations
+observer.observe(targetNode, config);
