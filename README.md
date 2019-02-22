@@ -1,5 +1,5 @@
 # 2ch-webm-highlighter
-Google Chrome extension that makes all _2ch.hk_ video titles highlighted.
+_Google Chrome_/_Mozilla Firefox_ extension that makes all _2ch.hk_ video titles highlighted.
 
 # How to run:
 
