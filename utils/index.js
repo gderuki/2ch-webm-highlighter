@@ -1,7 +1,6 @@
 
 /**
  * Perform repaint of highlighted elements on a page.
- *
  * @param {NodeList} toBeHighlighted - Reference to webms that should be highlighted.
  */
 function performHighlighting(toBeHighlighted) {
@@ -21,7 +20,6 @@ function performHighlighting(toBeHighlighted) {
   
   /**
    * Filters out every post that does not have video attached.
-   *
    * @param {NodeList} withAttachment - Well, those are posts that have attachment in it.
    * @param {NodeList} toBeHighlighted - Reference to webms that should be highlighted.
    */
