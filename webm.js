@@ -1,27 +1,48 @@
+/**
+ * Parses every post with a video attachment on a page.
+ */
 function parseVideoTitles() {
-  // get all posts with attachments
-  var postsWithAttachment = document.querySelectorAll('[class^=desktop]');
-  var webms = [];
+  var toBeHighlighted = [];
+  // Get all posts with attachments
+  var withAttachment = document.querySelectorAll('[class^=desktop]');
 
   // Filter out anything that isn't video
-  for (i = 0; i < postsWithAttachment.length; i++) {
-    if (postsWithAttachment[i].title.endsWith(".webm") || postsWithAttachment[i].title.endsWith(".mp4")) {
-      webms.push(postsWithAttachment[i]);
-    }
-  }
+  filterOutNonVideoPosts(withAttachment, toBeHighlighted);
 
   // Add custom styles to each post with video
-  if (typeof webms !== "undefined" && webms.length > 0) {
-    for (i = 0; i < webms.length; i++) {
-      webms[i].onmouseover = function () {
-        this.style.opacity = "0.7";
-      }
-      webms[i].onmouseout = function () {
-        this.style.opacity = "1.0";
-      }
+  performHighlighting(toBeHighlighted);
+}
 
-      webms[i].parentElement.style.cssText = "padding-left: 2px; border-left: 6px solid deeppink;";
-      webms[i].style.cssText = "color: deeppink !important; font-weight: bold !important; font-size: 16px !important;";
+/**
+ * Perform repaint of highlighted elements on a page.
+ *
+ * @param {NodeList} toBeHighlighted - Reference to webms that should be highlighted.
+ */
+function performHighlighting(toBeHighlighted) {
+  if (typeof toBeHighlighted !== "undefined" && toBeHighlighted.length > 0) {
+    for (i = 0; i < toBeHighlighted.length; i++) {
+      toBeHighlighted[i].onmouseover = function () {
+        this.style.opacity = "0.7";
+      };
+      toBeHighlighted[i].onmouseout = function () {
+        this.style.opacity = "1.0";
+      };
+      toBeHighlighted[i].parentElement.style.cssText = "padding-left: 2px; border-left: 6px solid deeppink;";
+      toBeHighlighted[i].style.cssText = "color: deeppink !important; font-weight: bold !important; font-size: 16px !important;";
+    }
+  }
+}
+
+/**
+ * Filters out every post that does not have video attached.
+ *
+ * @param {NodeList} withAttachment - Well, those are posts that have attachment in it.
+ * @param {NodeList} toBeHighlighted - Reference to webms that should be highlighted.
+ */
+function filterOutNonVideoPosts(withAttachment, toBeHighlighted) {
+  for (i = 0; i < withAttachment.length; i++) {
+    if (withAttachment[i].title.endsWith(".webm") || withAttachment[i].title.endsWith(".mp4")) {
+      toBeHighlighted.push(withAttachment[i]);
     }
   }
 }

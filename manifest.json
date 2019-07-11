@@ -2,6 +2,9 @@
     "name": "2ch Video Highlighter",
     "version": "1.0",
     "description": "Highlight all the webms, mp4s, etc...",
+    "icons": {
+      "128": "icon128.png"
+    },
     "content_scripts": [
       {
         "matches": ["https://*.2ch.hk/*"],
