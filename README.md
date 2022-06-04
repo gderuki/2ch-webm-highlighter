@@ -7,3 +7,5 @@ _Google Chrome_/_Mozilla Firefox_ extension that makes all _2ch.hk_ video titles
 * Navigate to `chrome://extensions`
 * Press `Load Unpacked` and select folder where you have `manifest.json`
 * Voila, you should now see all 2ch.hk videos highlighted 
+
+2022 Yoba Hehe Don't Ask Don't Tell
